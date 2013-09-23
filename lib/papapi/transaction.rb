@@ -5,6 +5,7 @@ module Papapi
     property :userid
     property :campaignid
     property :commtypeid
+    property :affiliateid
     property :totalcost
     property :dateapproved
     property :dateinserted

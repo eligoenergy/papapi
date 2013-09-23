@@ -4,6 +4,10 @@ module Papapi
       update_properties(save_response(:add).fields)
     end
 
+    def save!(action)
+      update_properties(save_response(action.to_sym).fields)
+    end
+
     def update!
       update_properties(save_response(:save).fields)
     end
@@ -34,6 +38,12 @@ module Papapi
 
       def pap_class
         @pap_class
+      end
+
+      def createAction!(action, params)
+        m = new params
+        m.save!(action)
+        return m
       end
 
       def create! (params)
