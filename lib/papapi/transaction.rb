@@ -3,6 +3,7 @@ module Papapi
     set_pap_class 'Pap_Merchants_Transaction_Transactions'
 
     property :userid
+    property :actioncode
     property :campaignid
     property :commtypeid
     property :affiliateid
