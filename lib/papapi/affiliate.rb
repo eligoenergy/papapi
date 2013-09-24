@@ -59,7 +59,7 @@ module Papapi
       response.map{|r| r['commission'].to_f}.inject{|sum,x| sum + x }
     end
 
-    def get_affiliates(offset, limit = 30, opt = {})
+    def self.get_affiliates(offset, limit = 30, opt = {})
 
       # Default options
       opt[:rstatus] ||= 'A'
@@ -74,6 +74,25 @@ module Papapi
             ['rstatus', 'E', opt[:rstatus]]
           ]
         }
+      ).response
+    end
+
+    def self.get_affiliates_id(refid, offset = 0, limit = 30, opt = {})
+
+      # Default options
+      opt[:rstatus] ||= 'A'
+
+      response = Papapi::GridRequest.new(
+          :class_name => 'Pap_Merchants_User_AffiliatesGrid',
+          :method_name=> 'getRows',
+          :arguments  => {
+              :offset => offset,
+              :limit  => limit,
+              :filters => [
+                  ['rstatus', 'E', opt[:rstatus]],
+                  ['refid', 'E', refid]
+              ]
+          }
       ).response
     end
 
