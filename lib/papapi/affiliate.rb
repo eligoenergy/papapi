@@ -96,6 +96,20 @@ module Papapi
       ).response
     end
 
+    def self.get_affiliates_by_visitor_id(visitorid, offset = 0, limit = 30, opt = {})
+      response = Papapi::GridRequest.new(
+          :class_name => 'Pap_Merchants_Tools_VisitorAffiliatesGrid',
+          :method_name=> 'getRows',
+          :arguments => {
+              :offset => 0,
+              :limit => 0,
+              :filters => [
+                  ['visitorid', 'E', visitorid]
+              ]
+          }
+      ).response
+    end
+
   end
 
 end
