@@ -15,6 +15,7 @@ module Papapi
   private
 
     def check_for_errors
+      raise "Invalid papapi response: #{@http_response.body}" unless parsed.is_a?(Hash)
       raise parsed['message'] if parsed['success'] != 'Y' && parsed['message']
       raise parsed['e']       if parsed['e']
     end
